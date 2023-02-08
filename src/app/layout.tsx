@@ -1,5 +1,5 @@
 import { OverpassFont, UbuntuFont } from "/src/app/fonts";
-import "/src/globals.css";
+import "/src/app/globals.css";
 
 interface IProps {
   children: React.ReactNode;
