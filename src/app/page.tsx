@@ -10,6 +10,7 @@ import closeIcon from "/public/images/icon-close.svg";
 import hamburgerIcon from "/public/images/icon-hamburger.svg";
 import logoImg from "/public/images/logo.svg";
 
+import Link from "next/link";
 import circlePattern from "/public/images/bg-pattern-circles.svg";
 import introPatternDesktop from "/public/images/bg-pattern-intro-desktop.svg";
 import introPatternMobile from "/public/images/bg-pattern-intro-mobile.svg";
@@ -47,8 +48,8 @@ export default function Home() {
         )}
 
         <div
-          className={`absolute top-full right-0 left-0 mx-6 rounded-md bg-white p-6 text-center text-primary-blue drop-shadow-xl transition-opacity desktop:relative desktop:z-0 desktop:flex desktop:flex-1 desktop:items-center desktop:justify-between desktop:bg-transparent desktop:text-start desktop:text-white desktop:opacity-100 ${
-            isOpenMenu ? "" : "-z-50 opacity-0"
+          className={`absolute top-full right-0 left-0 mx-6 rounded-md bg-white p-6 text-center text-primary-blue drop-shadow-xl transition-opacity desktop:relative desktop:mx-0 desktop:flex desktop:flex-1 desktop:items-center desktop:justify-between desktop:bg-transparent desktop:py-0 desktop:text-start desktop:text-white ${
+            isOpenMenu ? "" : "hidden"
           }`}
         >
           <ul className="flex flex-col gap-6 desktop:flex-row desktop:gap-0">
@@ -56,9 +57,11 @@ export default function Home() {
             <li className="relative">
               <button
                 onClick={toggleProduct}
-                className="mx-auto flex items-center gap-2 font-medium desktop:px-4"
+                className="group mx-auto flex items-center gap-2 font-medium desktop:px-4"
               >
-                <span>Product</span>
+                <span className="underline-offset-2 group-hover:underline">
+                  Product
+                </span>
                 <span className={isOpenProduct ? "rotate-180" : ""}>
                   <ImageSwitch
                     mobileSrc={arrowDarkIcon}
@@ -69,11 +72,31 @@ export default function Home() {
               </button>
               {isOpenProduct ? (
                 <ul className="mt-4 space-y-4 rounded-md bg-neutral-700/30 p-6 text-primary-blue drop-shadow-xl desktop:absolute desktop:top-full desktop:w-40 desktop:space-y-3 desktop:bg-white desktop:py-8">
-                  <li>Overview</li>
-                  <li>Pricing</li>
-                  <li>Marketplace</li>
-                  <li>Features</li>
-                  <li>Integrations</li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Overview
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Pricing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Marketplace
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Features
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Integrations
+                    </Link>
+                  </li>
                 </ul>
               ) : null}
             </li>
@@ -81,9 +104,11 @@ export default function Home() {
             <li className="relative">
               <button
                 onClick={toggleCompany}
-                className="mx-auto flex items-center gap-2 font-medium desktop:px-4"
+                className="group mx-auto flex items-center gap-2 font-medium desktop:px-4"
               >
-                <span>Company</span>
+                <span className="underline-offset-2 group-hover:underline">
+                  Company
+                </span>
                 <span className={isOpenCompany ? "rotate-180" : ""}>
                   <ImageSwitch
                     mobileSrc={arrowDarkIcon}
@@ -94,10 +119,26 @@ export default function Home() {
               </button>
               {isOpenCompany ? (
                 <ul className="mt-4 space-y-4 rounded-md bg-neutral-700/30 p-6 text-primary-blue drop-shadow-xl desktop:absolute desktop:top-full desktop:w-40 desktop:space-y-3 desktop:bg-white desktop:py-8">
-                  <li>About</li>
-                  <li>Team</li>
-                  <li>Blog</li>
-                  <li>Careers</li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Team
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Careers
+                    </Link>
+                  </li>
                 </ul>
               ) : null}
             </li>
@@ -105,9 +146,11 @@ export default function Home() {
             <li className="relative">
               <button
                 onClick={toggleContact}
-                className="mx-auto flex items-center gap-2 font-medium desktop:px-4"
+                className="group mx-auto flex items-center gap-2 font-medium desktop:px-4"
               >
-                <span>Contact</span>
+                <span className="underline-offset-2 group-hover:underline">
+                  Contact
+                </span>
                 <span className={isOpenContact ? "rotate-180" : ""}>
                   <ImageSwitch
                     mobileSrc={arrowDarkIcon}
@@ -118,9 +161,21 @@ export default function Home() {
               </button>
               {isOpenContact ? (
                 <ul className="mt-4 space-y-4 rounded-md bg-neutral-700/30 p-6 text-primary-blue drop-shadow-xl desktop:absolute desktop:top-full desktop:w-40 desktop:space-y-3 desktop:bg-white desktop:py-8">
-                  <li>Contact</li>
-                  <li>Newsletter</li>
-                  <li>LinkedIn</li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      Newsletter
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="hover:font-bold">
+                      LinkedIn
+                    </Link>
+                  </li>
                 </ul>
               ) : null}
             </li>
@@ -130,13 +185,13 @@ export default function Home() {
 
           <ul className="flex flex-col desktop:flex-row">
             <li className="mb-2 desktop:mb-0">
-              <button className="rounded-full bg-white py-3 px-10 text-lg font-medium text-primary-blue desktop:bg-transparent desktop:text-base desktop:text-white">
+              <button className="rounded-full bg-white py-3 px-10 text-lg font-medium text-primary-blue underline-offset-2 hover:underline desktop:bg-transparent desktop:text-base desktop:text-white">
                 Login
               </button>
             </li>
 
             <li>
-              <button className="rounded-full bg-gradient-to-r from-gradient-red-100 to-gradient-red-200 py-3 px-10 font-black text-white desktop:from-white desktop:to-white desktop:text-primary-red-200">
+              <button className="rounded-full bg-gradient-to-r from-gradient-red-100 to-gradient-red-200 py-3 px-10 font-black text-white hover:from-gradient-red-100/20 hover:to-gradient-red-100/20 hover:text-primary-red-200 desktop:from-white desktop:to-white desktop:text-primary-red-200 desktop:hover:from-white/30 desktop:hover:to-white/30 desktop:hover:text-white">
                 Sign Up
               </button>
             </li>
@@ -157,7 +212,7 @@ export default function Home() {
 
           {/* content */}
           <div className="absolute mx-auto mt-8 flex max-w-xs flex-col items-center px-6 text-center desktop:mt-20 desktop:max-w-none">
-            <h2 className="mb-4 text-3xl font-semibold desktop:text-5xl">
+            <h2 className="mb-4 text-3xl font-semibold desktop:text-6xl">
               A modern publishing platform
             </h2>
             <p className="mb-12 desktop:text-lg">
@@ -165,10 +220,10 @@ export default function Home() {
             </p>
 
             <div className="flex w-full items-center justify-between gap-4 desktop:justify-center">
-              <button className="rounded-full bg-white py-3 px-4 font-black text-primary-red-200">
+              <button className="rounded-full bg-white py-3 px-4 font-bold text-primary-red-200 transition-colors duration-100 hover:bg-white/30 hover:text-white">
                 Start for Free
               </button>
-              <button className="rounded-full border border-white bg-transparent py-3 px-4 font-black">
+              <button className="rounded-full border border-white bg-transparent py-3 px-4 font-bold transition-colors duration-100 hover:bg-white hover:text-primary-red-200">
                 Learn More
               </button>
             </div>
@@ -231,7 +286,7 @@ export default function Home() {
             </div>
 
             <div className="absolute top-0 mx-auto mt-56 max-w-xs px-3 text-center desktop:top-auto desktop:mr-36 desktop:mt-0 desktop:w-1/2 desktop:max-w-lg desktop:px-0 desktop:text-start">
-              <h2 className="mb-4 text-4xl font-medium leading-tight text-white">
+              <h2 className="mb-4 text-4xl font-medium leading-tight text-white desktop:mb-6">
                 State of the Art Infrastructure
               </h2>
               <p className="leading-relaxed text-neutral-700">
@@ -286,11 +341,31 @@ export default function Home() {
               Product
             </div>
             <ul className="space-y-1.5 text-neutral-700 desktop:space-y-2">
-              <li>Overview</li>
-              <li>Pricing</li>
-              <li>Marketplace</li>
-              <li>Features</li>
-              <li>Integrations</li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Overview
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Marketplace
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Integrations
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -299,10 +374,26 @@ export default function Home() {
               Company
             </div>
             <ul className="space-y-1.5 text-neutral-700 desktop:space-y-2">
-              <li>About</li>
-              <li>Team</li>
-              <li>Blog</li>
-              <li>Careers</li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Team
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Careers
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -311,9 +402,21 @@ export default function Home() {
               Connect
             </div>
             <ul className="space-y-1.5 text-neutral-700 desktop:space-y-2">
-              <li>Contact</li>
-              <li>Newsletter</li>
-              <li>LinkedIn</li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  Newsletter
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="underline-offset-2 hover:underline">
+                  LinkedIn
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
