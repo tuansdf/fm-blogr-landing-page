@@ -5,6 +5,7 @@ import { useState } from "react";
 import ImageSwitch from "/src/app/image-switch";
 
 import arrowDarkIcon from "public/images/icon-arrow-dark.svg";
+import arrowLightIcon from "public/images/icon-arrow-light.svg";
 import closeIcon from "/public/images/icon-close.svg";
 import hamburgerIcon from "/public/images/icon-hamburger.svg";
 import logoImg from "/public/images/logo.svg";
@@ -32,7 +33,7 @@ export default function Home() {
 
   return (
     <>
-      <nav className="absolute right-0 left-0 top-0 z-10 flex items-center justify-between py-10 px-6 desktop:mx-auto desktop:max-w-6xl">
+      <nav className="absolute right-0 left-0 top-0 z-10 flex items-center justify-between py-10 px-6 desktop:mx-auto desktop:max-w-6xl desktop:px-0">
         <Image src={logoImg} alt="logo" />
 
         {isOpenMenu ? (
@@ -45,92 +46,102 @@ export default function Home() {
           </button>
         )}
 
-        <ul
-          className={`absolute top-full right-0 left-0 mx-6 overflow-hidden rounded-md bg-white p-6 text-center text-primary-blue drop-shadow-xl transition-opacity desktop:relative ${
+        <div
+          className={`absolute top-full right-0 left-0 mx-6 rounded-md bg-white p-6 text-center text-primary-blue drop-shadow-xl transition-opacity desktop:relative desktop:z-0 desktop:flex desktop:flex-1 desktop:items-center desktop:justify-between desktop:bg-transparent desktop:text-start desktop:text-white desktop:opacity-100 ${
             isOpenMenu ? "" : "-z-50 opacity-0"
           }`}
         >
-          {/* product */}
-          <li className="relative mb-6">
-            <button
-              onClick={toggleProduct}
-              className="mx-auto flex items-center gap-2 font-medium"
-            >
-              <span>Product</span>
-              <Image
-                src={arrowDarkIcon}
-                alt=""
-                className={isOpenProduct ? "rotate-180" : ""}
-              />
-            </button>
-            {isOpenProduct ? (
-              <ul className="top-full mt-4 w-full space-y-4 overflow-hidden rounded-md bg-neutral-700/30 p-6 desktop:absolute">
-                <li>Overview</li>
-                <li>Pricing</li>
-                <li>Marketplace</li>
-                <li>Features</li>
-                <li>Integrations</li>
-              </ul>
-            ) : null}
-          </li>
-          {/* company */}
-          <li className="relative mb-6">
-            <button
-              onClick={toggleCompany}
-              className="mx-auto flex items-center gap-2 font-medium"
-            >
-              <span>Company</span>
-              <Image
-                src={arrowDarkIcon}
-                alt=""
-                className={isOpenCompany ? "rotate-180" : ""}
-              />
-            </button>
-            {isOpenCompany ? (
-              <ul className="top-full mt-4 w-full space-y-4 overflow-hidden rounded-md bg-neutral-700/30 p-6 desktop:absolute">
-                <li>About</li>
-                <li>Team</li>
-                <li>Blog</li>
-                <li>Careers</li>
-              </ul>
-            ) : null}
-          </li>
-          {/* contact */}
-          <li className="relative mb-6">
-            <button
-              onClick={toggleContact}
-              className="mx-auto flex items-center gap-2 font-medium"
-            >
-              <span>Contact</span>
-              <Image
-                src={arrowDarkIcon}
-                alt=""
-                className={isOpenContact ? "rotate-180" : ""}
-              />
-            </button>
-            {isOpenContact ? (
-              <ul className="top-full mt-4 w-full space-y-4 overflow-hidden rounded-md bg-neutral-700/30 p-6 desktop:absolute">
-                <li>Contact</li>
-                <li>Newsletter</li>
-                <li>LinkedIn</li>
-              </ul>
-            ) : null}
-          </li>
+          <ul className="flex flex-col gap-6 desktop:flex-row desktop:gap-0">
+            {/* product */}
+            <li className="relative">
+              <button
+                onClick={toggleProduct}
+                className="mx-auto flex items-center gap-2 font-medium desktop:px-4"
+              >
+                <span>Product</span>
+                <span className={isOpenProduct ? "rotate-180" : ""}>
+                  <ImageSwitch
+                    mobileSrc={arrowDarkIcon}
+                    desktopSrc={arrowLightIcon}
+                    alt=""
+                  />
+                </span>
+              </button>
+              {isOpenProduct ? (
+                <ul className="mt-4 space-y-4 rounded-md bg-neutral-700/30 p-6 text-primary-blue drop-shadow-xl desktop:absolute desktop:top-full desktop:w-40 desktop:space-y-3 desktop:bg-white desktop:py-8">
+                  <li>Overview</li>
+                  <li>Pricing</li>
+                  <li>Marketplace</li>
+                  <li>Features</li>
+                  <li>Integrations</li>
+                </ul>
+              ) : null}
+            </li>
+            {/* company */}
+            <li className="relative">
+              <button
+                onClick={toggleCompany}
+                className="mx-auto flex items-center gap-2 font-medium desktop:px-4"
+              >
+                <span>Company</span>
+                <span className={isOpenCompany ? "rotate-180" : ""}>
+                  <ImageSwitch
+                    mobileSrc={arrowDarkIcon}
+                    desktopSrc={arrowLightIcon}
+                    alt=""
+                  />
+                </span>
+              </button>
+              {isOpenCompany ? (
+                <ul className="mt-4 space-y-4 rounded-md bg-neutral-700/30 p-6 text-primary-blue drop-shadow-xl desktop:absolute desktop:top-full desktop:w-40 desktop:space-y-3 desktop:bg-white desktop:py-8">
+                  <li>About</li>
+                  <li>Team</li>
+                  <li>Blog</li>
+                  <li>Careers</li>
+                </ul>
+              ) : null}
+            </li>
+            {/* contact */}
+            <li className="relative">
+              <button
+                onClick={toggleContact}
+                className="mx-auto flex items-center gap-2 font-medium desktop:px-4"
+              >
+                <span>Contact</span>
+                <span className={isOpenContact ? "rotate-180" : ""}>
+                  <ImageSwitch
+                    mobileSrc={arrowDarkIcon}
+                    desktopSrc={arrowLightIcon}
+                    alt=""
+                  />
+                </span>
+              </button>
+              {isOpenContact ? (
+                <ul className="mt-4 space-y-4 rounded-md bg-neutral-700/30 p-6 text-primary-blue drop-shadow-xl desktop:absolute desktop:top-full desktop:w-40 desktop:space-y-3 desktop:bg-white desktop:py-8">
+                  <li>Contact</li>
+                  <li>Newsletter</li>
+                  <li>LinkedIn</li>
+                </ul>
+              ) : null}
+            </li>
+          </ul>
 
-          <li className="mb-6 h-[1px] bg-neutral-700/50"></li>
+          <div className="my-6 h-[1px] bg-neutral-700/50 desktop:hidden"></div>
 
-          <li className="mb-2">
-            <button className="rounded-full bg-white py-3 px-10 text-lg font-medium text-primary-blue">
-              Login
-            </button>
-          </li>
+          <ul className="flex flex-col desktop:flex-row">
+            <li className="mb-2 desktop:mb-0">
+              <button className="rounded-full bg-white py-3 px-10 text-lg font-medium text-primary-blue desktop:bg-transparent desktop:text-base desktop:text-white">
+                Login
+              </button>
+            </li>
 
-          <li>
-            <button className="rounded-full bg-gradient-to-r from-gradient-red-100 to-gradient-red-200 py-3 px-10 font-black text-white">
-              Sign Up
-            </button>
-          </li>
-        </ul>
+            <li>
+              <button className="rounded-full bg-gradient-to-r from-gradient-red-100 to-gradient-red-200 py-3 px-10 font-black text-white desktop:from-white desktop:to-white desktop:text-primary-red-200">
+                Sign Up
+              </button>
+            </li>
+          </ul>
+        </div>
       </nav>
 
       <main>
@@ -145,7 +156,7 @@ export default function Home() {
           </div>
 
           {/* content */}
-          <div className="absolute mx-auto mt-8 flex max-w-xs flex-col items-center px-6 text-center desktop:max-w-none">
+          <div className="absolute mx-auto mt-8 flex max-w-xs flex-col items-center px-6 text-center desktop:mt-20 desktop:max-w-none">
             <h2 className="mb-4 text-3xl font-semibold desktop:text-5xl">
               A modern publishing platform
             </h2>
