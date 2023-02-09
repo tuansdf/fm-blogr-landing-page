@@ -10,7 +10,7 @@ export default function RootLayout({ children }: IProps) {
     <html lang="en">
       <head />
       <body
-        className={`${OverpassFont.variable} ${UbuntuFont.variable} relative mx-auto flex min-h-screen w-full max-w-screen-mobile flex-col font-overpass text-neutral-900 desktop:max-w-screen-desktop`}
+        className={`${OverpassFont.variable} ${UbuntuFont.variable} relative mx-auto flex min-h-screen w-full max-w-screen-mobile flex-col overflow-x-hidden font-overpass text-neutral-900 desktop:max-w-screen-desktop`}
       >
         {children}
       </body>
