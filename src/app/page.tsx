@@ -1,8 +1,13 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
+import { useState } from "react";
+import ImageSwitch from "/src/app/image-switch";
+
+import arrowDarkIcon from "public/images/icon-arrow-dark.svg";
+import closeIcon from "/public/images/icon-close.svg";
 import hamburgerIcon from "/public/images/icon-hamburger.svg";
 import logoImg from "/public/images/logo.svg";
-import ImageSwitch from "/src/app/image-switch";
 
 import circlePattern from "/public/images/bg-pattern-circles.svg";
 import introPatternDesktop from "/public/images/bg-pattern-intro-desktop.svg";
@@ -14,13 +19,118 @@ import laptopIllustrationMobile from "/public/images/illustration-laptop-mobile.
 import phonesIllustration from "/public/images/illustration-phones.svg";
 
 export default function Home() {
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isOpenProduct, setIsOpenProduct] = useState(false);
+  const [isOpenCompany, setIsOpenCompany] = useState(false);
+  const [isOpenContact, setIsOpenContact] = useState(false);
+
+  const openMenu = () => setIsOpenMenu(true);
+  const closeMenu = () => setIsOpenMenu(false);
+  const toggleProduct = () => setIsOpenProduct((prev) => !prev);
+  const toggleCompany = () => setIsOpenCompany((prev) => !prev);
+  const toggleContact = () => setIsOpenContact((prev) => !prev);
+
   return (
     <>
       <nav className="absolute right-0 left-0 top-0 z-10 flex items-center justify-between py-10 px-6 desktop:mx-auto desktop:max-w-6xl">
         <Image src={logoImg} alt="logo" />
-        <button>
-          <Image src={hamburgerIcon} alt="menu toggler" />
-        </button>
+
+        {isOpenMenu ? (
+          <button onClick={closeMenu} className="desktop:hidden">
+            <Image src={closeIcon} alt="close menu" />
+          </button>
+        ) : (
+          <button onClick={openMenu} className="desktop:hidden">
+            <Image src={hamburgerIcon} alt="open menu" />
+          </button>
+        )}
+
+        <ul
+          className={`absolute top-full right-0 left-0 mx-6 overflow-hidden rounded-md bg-white p-6 text-center text-primary-blue drop-shadow-xl transition-opacity desktop:relative ${
+            isOpenMenu ? "" : "-z-50 opacity-0"
+          }`}
+        >
+          {/* product */}
+          <li className="relative mb-6">
+            <button
+              onClick={toggleProduct}
+              className="mx-auto flex items-center gap-2 font-medium"
+            >
+              <span>Product</span>
+              <Image
+                src={arrowDarkIcon}
+                alt=""
+                className={isOpenProduct ? "rotate-180" : ""}
+              />
+            </button>
+            {isOpenProduct ? (
+              <ul className="top-full mt-4 w-full space-y-4 overflow-hidden rounded-md bg-neutral-700/30 p-6 desktop:absolute">
+                <li>Overview</li>
+                <li>Pricing</li>
+                <li>Marketplace</li>
+                <li>Features</li>
+                <li>Integrations</li>
+              </ul>
+            ) : null}
+          </li>
+          {/* company */}
+          <li className="relative mb-6">
+            <button
+              onClick={toggleCompany}
+              className="mx-auto flex items-center gap-2 font-medium"
+            >
+              <span>Company</span>
+              <Image
+                src={arrowDarkIcon}
+                alt=""
+                className={isOpenCompany ? "rotate-180" : ""}
+              />
+            </button>
+            {isOpenCompany ? (
+              <ul className="top-full mt-4 w-full space-y-4 overflow-hidden rounded-md bg-neutral-700/30 p-6 desktop:absolute">
+                <li>About</li>
+                <li>Team</li>
+                <li>Blog</li>
+                <li>Careers</li>
+              </ul>
+            ) : null}
+          </li>
+          {/* contact */}
+          <li className="relative mb-6">
+            <button
+              onClick={toggleContact}
+              className="mx-auto flex items-center gap-2 font-medium"
+            >
+              <span>Contact</span>
+              <Image
+                src={arrowDarkIcon}
+                alt=""
+                className={isOpenContact ? "rotate-180" : ""}
+              />
+            </button>
+            {isOpenContact ? (
+              <ul className="top-full mt-4 w-full space-y-4 overflow-hidden rounded-md bg-neutral-700/30 p-6 desktop:absolute">
+                <li>Contact</li>
+                <li>Newsletter</li>
+                <li>LinkedIn</li>
+              </ul>
+            ) : null}
+          </li>
+
+          <li className="mb-6 h-[1px] bg-neutral-700/50"></li>
+
+          <li className="mb-2">
+            <button className="rounded-full bg-white py-3 px-10 text-lg font-medium text-primary-blue">
+              Login
+            </button>
+          </li>
+
+          <li>
+            <button className="rounded-full bg-gradient-to-r from-gradient-red-100 to-gradient-red-200 py-3 px-10 font-black text-white">
+              Sign Up
+            </button>
+          </li>
+        </ul>
       </nav>
 
       <main>
